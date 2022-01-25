@@ -12,7 +12,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { BookStoreComponent } from './book-store/book-store.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ReduxStoreComponent } from './redux-store/redux-store.component';
-import {NgRedux ,NgReduxModule} from "ng2-redux";
+// import {NgRedux ,NgReduxModule} from "ng2-redux";
 
 
 
@@ -47,7 +47,7 @@ const routes: Routes = [{
     MsalModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    NgReduxModule
+    // NgReduxModule
   ],
   providers: [
     {
@@ -59,4 +59,5 @@ const routes: Routes = [{
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

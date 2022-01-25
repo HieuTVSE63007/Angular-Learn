@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {IAppState, rootReducer} from "./store";
 
 @Component({
   selector: 'app-redux-store',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReduxStoreComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
