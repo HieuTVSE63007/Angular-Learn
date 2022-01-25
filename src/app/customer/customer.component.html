@@ -1,0 +1,46 @@
+<h3>Add Customer</h3>
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>No.</th>-->
+<!--    <th>Name</th>-->
+<!--    <th>Address</th>-->
+<!--    <th>City</th>-->
+<!--    <th>Country</th>-->
+<!--    <th>State</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let customer of customers">-->
+<!--    <td>{{customer.customerNo}}</td>-->
+<!--    <td><input type="number" value="{{customer.customerNo}}"></td>-->
+<!--    <td>{{customer.address}}</td>-->
+<!--    <td>{{customer.city}}</td>-->
+<!--    <td>{{customer.country}}</td>-->
+<!--    <td>{{customer.state}}</td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<br/>
+<!-- test add new -->
+<form [formGroup]="employee" (change)="onChangeBox($event)">
+  <div>
+    <label for="empId">ID: </label>
+    <input id="empId" type="text" formControlName="id"><br/>
+
+    <label for="empName">Name: </label>
+    <input id="empName" type="text" formControlName="empName"><br/>
+
+    <label for="empGenMale">Male: </label>
+    <input id="empGenMale" type="checkbox" formControlName="empGenMale" style="margin-right: 10px">
+
+    <label for="empGenFemale">Female: </label>
+    <input id="empGenFemale" type="checkbox" formControlName="empGenFemale"><br/>
+
+    <button type="submit" (click)="onSubmit()" [disabled]="isDisable">Submit</button><br/>
+    <p style="color: red">{{employee.get('error')?.value}}</p>
+
+  </div>
+</form>
+<pre>{{employee.value | json}}</pre>
+
