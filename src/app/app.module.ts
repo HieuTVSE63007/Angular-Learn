@@ -10,11 +10,13 @@ import {MSAL_INSTANCE, MsalModule, MsalService} from '@azure/msal-angular';
 import {IPublicClientApplication, PublicClientApplication} from "@azure/msal-browser";
 import {RouterModule, Routes} from "@angular/router";
 import { BookStoreComponent } from './book-store/book-store.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StoreModule} from "@ngrx/store";
 import {galleryReducers} from "./gallery-redux/store/gallery.reducers";
 import { GalleryReduxComponent } from './gallery-redux/gallery-redux.component';
 import {GalleryService} from "./gallery-redux/gallery/gallery.service";
+import {EffectsModule} from "@ngrx/effects";
+import {GalleryEffects} from "./gallery-redux/store/gallery.effects";
 
 
 
@@ -52,7 +54,9 @@ const routes: Routes = [{
     MsalModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    StoreModule.forRoot({gallery: galleryReducers})
+    StoreModule.forRoot({gallery: galleryReducers}),
+    EffectsModule.forRoot([GalleryEffects]),
+    FormsModule
   ],
   providers: [
     {

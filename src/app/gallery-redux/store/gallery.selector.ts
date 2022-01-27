@@ -9,4 +9,13 @@ export const uniqueAlbumIds = createSelector(
   (gallery:GalleryModel[]) => {
     return [...new Set(gallery.map(i => i.albumId))];
   }
-)
+);
+
+export const galleryByAlbumId = (albumId: number) => createSelector(
+  galleryRootSelector, (gallery: GalleryModel[]) => {
+    if (albumId === -1){
+      return gallery;
+    }
+    return gallery.filter((i => i.albumId === albumId));
+  }
+);
