@@ -11,8 +11,10 @@ import {IPublicClientApplication, PublicClientApplication} from "@azure/msal-bro
 import {RouterModule, Routes} from "@angular/router";
 import { BookStoreComponent } from './book-store/book-store.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { ReduxStoreComponent } from './redux-store/redux-store.component';
-// import {NgRedux ,NgReduxModule} from "ng2-redux";
+import {StoreModule} from "@ngrx/store";
+import {galleryReducers} from "./gallery-redux/store/gallery.reducers";
+import { GalleryReduxComponent } from './gallery-redux/gallery-redux.component';
+import {GalleryService} from "./gallery-redux/gallery/gallery.service";
 
 
 
@@ -31,7 +33,10 @@ const routes: Routes = [{
 },{
   path:'book-store',
   component: BookStoreComponent
-}
+},{
+  path:'gallery-redux',
+  component: GalleryReduxComponent
+},
 ];
 
 @NgModule({
@@ -39,7 +44,7 @@ const routes: Routes = [{
     AppComponent,
     CustomerComponent,
     BookStoreComponent,
-    ReduxStoreComponent
+    GalleryReduxComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,14 +52,15 @@ const routes: Routes = [{
     MsalModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    // NgReduxModule
+    StoreModule.forRoot({gallery: galleryReducers})
   ],
   providers: [
     {
       provide: MSAL_INSTANCE,
       useFactory: MSALInstanceFactory
     },
-    MsalService
+    MsalService,
+    GalleryService
   ],
   bootstrap: [AppComponent]
 })
